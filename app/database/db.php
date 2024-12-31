@@ -63,17 +63,44 @@ function selectOne($table, $params =[]) {
         }
     }
 
-    $sql .= " LIMIT 1";
-
     $query = $connect->prepare($sql);
     $query->execute();
     dbCheckError($query);
     return $query->fetch();
 }
-$params=[
-    'admin' => 0,
-    'user_name' => 'Andrii'
-];
 
-//tt(selectAll('users', $params));
-tt(selectOne('users'));
+// Додавання даних в табличку
+function insert($table, $data) {
+    global $connect;
+    $i=0;
+    $coll = '';
+    $mask = '';
+    foreach ($data as $key => $value) {
+        if ($i === 0) {
+            $coll .= "$key";
+            $mask .= "'" . $value . "'";
+        }else{
+            $coll .= ", $key";
+            $mask .= ", '".$value . "'" ;
+        }
+        $i++;
+    }
+
+    $sql = "INSERT INTO $table ($coll) VALUES ($mask)";
+
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+$data = [
+    "admin" => "0",
+    "user_name" => "Andrii",
+    "email" => "test@email.com",
+    "password" => "24557x"
+];
+insert('users', $data);
