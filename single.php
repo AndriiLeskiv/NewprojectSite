@@ -1,4 +1,4 @@
-<?php include_once "header.php"; ?>
+<?php include_once "app/include/header.php"; ?>
 
 <div class="container">
     <div class="content row">
@@ -6,7 +6,7 @@
             <h2>Останні публікації</h2>
             <div class="single_post row">
                 <div class="img col-12">
-                    <img src="img/img_5.jpg" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_5.jpg" alt="" class="img-thumbnail">
                 </div>
                 <div class="info">
                     <i class="fa-solid fa-user"></i>Ім'я автора
@@ -78,4 +78,4 @@
     </div>
 </div>
 
-<?php include_once "footer.php"; ?>
+<?php include_once "app/include/footer.php"; ?>

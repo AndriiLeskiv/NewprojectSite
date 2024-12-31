@@ -1,4 +1,4 @@
-<?php include_once "header.php"; ?>
+<?php include_once "app/include/header.php"; ?>
 
 <div class="container reg_form">
     <form class="row justify-content-center" method="post" action="register.php">
@@ -26,9 +26,9 @@
         <div class="w-100"></div>
         <div class="mb-3 col-12 col-md-4">
             <button type="submit" class="btn btn-secondary">Реєстрація</button>
-            <a href="login.php">Логін</a>
+            <a href="<?php echo BASE_URL . 'login.php'?>">Логін</a>
         </div>
     </form>
 </div>
 
-<?php include_once "footer.php"; ?>
+<?php include_once "app/include/footer.php"; ?>

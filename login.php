@@ -1,6 +1,6 @@
-<?php include_once "header.php"; ?>
+<?php include_once "app/include/header.php"; ?>
 
-<div class="container reg_form">
+    <div class="container reg_form">
     <form class="row justify-content-center" method="post" action="login.php">
         <h2 class="col-12">Форма авторизації</h2>
         <div class="mb-3 col-12 col-md-4">
@@ -15,9 +15,9 @@
         <div class="w-100"></div>
         <div class="mb-3 col-12 col-md-4">
             <button type="submit" class="btn btn-secondary">Увійти</button>
-            <a href="login.php">Рєстрація</a>
+            <a href="<?php echo BASE_URL . 'register.php'?>">Рєстрація</a>
         </div>
     </form>
 </div>
 
-<?php include_once "footer.php"; ?>
+<?php include_once "app/include/footer.php"; ?>

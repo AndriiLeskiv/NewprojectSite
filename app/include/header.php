@@ -1,3 +1,5 @@
+<?php include_once "path.php"; ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL . 'assets/css/style.css'?>">
 </head>
 <body>
 <header class="container-fluid">
@@ -13,13 +15,13 @@
         <div class="row">
             <div class="col-4">
                 <h1>
-                    <a href="/">My blog</a>
+                    <a href="<?php echo BASE_URL ?>">My blog</a>
                 </h1>
             </div>
             <nav class="col-8">
                 <ul>
-                    <li><a href="index.php">Головна</a></li>
-                    <li><a href="#">Про нас</a></li>
+                    <li><a href="<?php echo BASE_URL ?>">Головна</a></li>
+                    <li><a href="<?php echo BASE_URL . 'about.php'?>">Про нас</a></li>
                     <li><a href="#">Послуги</a></li>
                     <li>
                         <a href="#"><i class="fa-solid fa-user"></i>Кабінет</a>

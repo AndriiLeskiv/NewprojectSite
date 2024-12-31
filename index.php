@@ -1,4 +1,4 @@
-<?php include_once "header.php"; ?>
+<?php include_once "app/include/header.php"; ?>
 
 <div class="container">
     <div class="row">
@@ -7,7 +7,7 @@
     <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/img_1.jfif" class="d-block w-100" alt="...">
+                <img src="assets/img/img_1.jfif" class="d-block w-100" alt="...">
                 <div class="carousel-caption carousel-caption-hack d-none d-md-block">
                     <h5>
                         <a href="#">First slide label</a>
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="img/img_2.jfif" class="d-block w-100" alt="...">
+                <img src="assets/img/img_2.jfif" class="d-block w-100" alt="...">
                 <div class="carousel-caption carousel-caption-hack d-none d-md-block">
                     <h5>
                         <a href="#">First slide label</a>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="img/img_4.jfif" class="d-block w-100" alt="...">
+                <img src="assets/img/img_4.jfif" class="d-block w-100" alt="...">
                 <div class="carousel-caption carousel-caption-hack d-none d-md-block">
                     <h5>
                         <a href="#">First slide label</a>
@@ -48,7 +48,7 @@
             <h2>Останні публікації</h2>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_1.jfif" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_1.jfif" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -63,7 +63,7 @@
             </div>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_3.png" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -78,7 +78,7 @@
             </div>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_3.png" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -93,7 +93,7 @@
             </div>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_3.png" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -108,7 +108,7 @@
             </div>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_3.png" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -123,7 +123,7 @@
             </div>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_3.png" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -138,7 +138,7 @@
             </div>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_3.png" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -153,7 +153,7 @@
             </div>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_3.png" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -168,7 +168,7 @@
             </div>
             <div class="post row">
                 <div class="img col-12 col-md-4">
-                    <img src="img/img_3.png" alt="" class="img-thumbnail">
+                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
                 </div>
                 <div class="post_text col-12 col-md-8">
                     <h3>
@@ -204,4 +204,4 @@
     </div>
 </div>
 
-<?php include_once "footer.php"; ?>
+<?php include_once "app/include/footer.php"; ?>
