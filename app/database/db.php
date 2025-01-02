@@ -7,7 +7,7 @@ function tt($value){
     echo '</pre>';
 }
 
-// перевірка виконання запиту
+// check the request execution
 function dbCheckError($query){
     $errors = $query->errorInfo();
     if($errors[0] !==PDO::ERR_NONE){
@@ -17,7 +17,7 @@ function dbCheckError($query){
     return true;
 }
 
-// Запит на отримання даниз з однієї таблиці
+// Request to retrieve data from one table
 function selectAll($table, $params =[]) {
     global $connect;
     $sql = "SELECT * FROM $table";
@@ -43,7 +43,7 @@ function selectAll($table, $params =[]) {
     return $query->fetchAll();
 }
 
-// Запит на отримання одного результату з вибраної таблиці
+// Query to get one result from the selected table
 function selectOne($table, $params =[]) {
     global $connect;
     $sql = "SELECT * FROM $table";
@@ -69,7 +69,7 @@ function selectOne($table, $params =[]) {
     return $query->fetch();
 }
 
-// Додавання даних в табличку
+// Adding data to the table
 function insert($table, $data) {
     global $connect;
     $i=0;
@@ -92,15 +92,46 @@ function insert($table, $data) {
         $query = $connect->prepare($sql);
         $query->execute();
         dbCheckError($query);
+        return $connect->lastInsertId();
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
 }
 
-$data = [
-    "admin" => "0",
-    "user_name" => "Andrii",
-    "email" => "test@email.com",
-    "password" => "24557x"
-];
-insert('users', $data);
+// Updated data to the table
+function update($table, $id, $data) {
+    global $connect;
+    $i=0;
+    $str = '';
+    foreach ($data as $key => $value) {
+        if ($i === 0) {
+            $str .= $key . " = '" . $value . "'";
+        }else{
+            $str .= ", " .$key ." = '".$value . "'" ;
+        }
+        $i++;
+    }
+
+    $sql = "UPDATE $table SET $str WHERE id = $id";
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+// Delete data to the table
+function delete($table, $id) {
+    global $connect;
+    $sql = "DELETE FROM $table WHERE id = $id";
+
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
