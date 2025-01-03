@@ -1,4 +1,7 @@
-<?php include_once "path.php"; ?>
+<?php
+    include_once "path.php";
+    include_once "app/database/db.php";
+?>
 
 <!doctype html>
 <html lang="en">
@@ -24,11 +27,20 @@
                     <li><a href="<?php echo BASE_URL . 'about.php'?>">Про нас</a></li>
                     <li><a href="#">Послуги</a></li>
                     <li>
-                        <a href="#"><i class="fa-solid fa-user"></i>Кабінет</a>
-                        <ul>
-                            <li><a href="#">Admin</a></li>
-                            <li><a href="#">Вихід</a></li>
-                        </ul>
+                        <?php if (isset($_SESSION['id'])) { ?>
+                            <a href="#"><i class="fa-solid fa-user"></i><?=$_SESSION['login']?></a>
+                            <ul>
+                                <?php if($_SESSION['admin']) { ?>
+                                    <li><a href="#">Admin</a></li>
+                                <?php } ?>
+                                <li><a href="#">Вихід</a></li>
+                            </ul>
+                        <?php } else { ?>
+                            <a href="<?php echo BASE_URL . 'login.php'?>"><i class="fa-solid fa-user"></i> Кабінет</a>
+                            <ul>
+                                <li><a href="<?php echo BASE_URL . 'register.php'?>">Реєстрація</a></li>
+                            </ul>
+                        <?php } ?>
                     </li>
                 </ul>
             </nav>
