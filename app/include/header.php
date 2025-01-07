@@ -28,12 +28,12 @@
                     <li><a href="#">Послуги</a></li>
                     <li>
                         <?php if (isset($_SESSION['id'])) { ?>
-                            <a href="#"><i class="fa-solid fa-user"></i><?=$_SESSION['login']?></a>
+                            <a href="#"><i class="fa-solid fa-user"></i> <?=$_SESSION['login']?></a>
                             <ul>
                                 <?php if($_SESSION['admin']) { ?>
                                     <li><a href="#">Admin</a></li>
                                 <?php } ?>
-                                <li><a href="#">Вихід</a></li>
+                                <li><a href="<?php echo BASE_URL . 'logout.php'?>">Вихід</a></li>
                             </ul>
                         <?php } else { ?>
                             <a href="<?php echo BASE_URL . 'login.php'?>"><i class="fa-solid fa-user"></i> Кабінет</a>

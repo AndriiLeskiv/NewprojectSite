@@ -32,7 +32,7 @@
         </div>
         <div class="w-100"></div>
         <div class="mb-3 col-12 col-md-4">
-            <button type="submit" name="submit" class="btn btn-secondary">Реєстрація</button>
+            <button type="submit" name="btn-register" class="btn btn-secondary">Реєстрація</button>
             <a href="<?php echo BASE_URL . 'login.php'?>">Логін</a>
         </div>
     </form>

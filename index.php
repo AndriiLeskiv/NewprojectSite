@@ -1,4 +1,6 @@
-<?php include_once "app/include/header.php"; ?>
+<?php
+    include_once "app/include/header.php";
+?>
 
 <div class="container">
     <div class="row">
@@ -193,11 +195,10 @@
             <div class="section topics">
                 <h3>Category</h3>
                 <ul>
-                    <li><a href="#">Програмування</a></li>
-                    <li><a href="#">Дизайн</a></li>
-                    <li><a href="#">Візуальзіція</a></li>
-                    <li><a href="#">Кейси</a></li>
-                    <li><a href="#">Мотивація</a></li>
+                <?php $getAllCategory = selectAll('categories');
+                    foreach ($getAllCategory as $key => $category) {?>
+                        <li><a href="#"><?=$category['name']?></a></li>
+                <?php } ?>
                 </ul>
             </div>
         </div>

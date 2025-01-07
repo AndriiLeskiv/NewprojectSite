@@ -136,3 +136,21 @@ function delete($table, $id) {
         echo "Error: " . $e->getMessage();
     }
 }
+
+//Join post with user
+function selectAllFromPostWithUser($table1, $table2){
+    global $connect;
+    $sql = "SELECT
+    t1.*,
+    t2.user_name,
+    t2.email
+    FROM $table1 AS t1 JOIN $table2 AS t2 ON t1.id_user = t2.id";
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+        return $query->fetchAll();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
