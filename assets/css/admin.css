@@ -125,7 +125,11 @@ header ul li ul li a{
 .post .post div.delete{
     color: red;
 }
+.post .post div.status{
+    color: #ff5f05;
+}
 .post .post div.edit:hover,
+.post .post div.status:hover,
 .post .post div.delete:hover{
     text-decoration: underline;
 }
@@ -208,7 +212,10 @@ header ul li ul li a{
     left: 0;
     padding-top: 20px;
 }
+form div.error li,
 form div.error p{
+    font-weight: 900;
+    list-style: none;
     color: red;
     font-style: italic;
     font-size: 0.8rem;

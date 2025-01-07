@@ -16,16 +16,16 @@
                     <h2>Додавання постів</h2>
                 </div>
                 <div class="row add-post">
-                    <form action="create.php" method="post">
+                    <form action="create.php" method="post" enctype="multipart/form-data">
                         <div class="mb-3 col-12 error">
-                            <p><?=$errorMessage?></p>
+                            <?php include_once "../../app/helps/errorInfo.php";?>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" value="<?=$postTitle?>" name="title" id="title" placeholder="Заголовок поста" aria-label="Заголовок поста">
+                            <input type="text" class="form-control" value="<?=$postTitle;?>" name="title" id="title" placeholder="Заголовок поста" aria-label="Заголовок поста">
                         </div>
                         <div class="col notThis">
                             <label for="editor" class="form-label">Вміст поста</label>
-                            <textarea class="form-control" name="editor" id="editor" rows="3"><?=$description?></textarea>
+                            <textarea class="form-control" name="editor" id="editor" rows="3"><?=$description;?></textarea>
                         </div>
                         <div class="input-group col">
                             <input type="file" name="img" class="form-control" id="inputGroupFile02">

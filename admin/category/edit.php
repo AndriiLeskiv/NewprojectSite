@@ -16,7 +16,6 @@
                     <h2>Оновлення категорії</h2>
                 </div>
                 <div class="row add-post">
-
                     <form action="create.php" method="post">
                         <div class="mb-3 col-12 error">
                             <p><?=$errorMessage?></p>

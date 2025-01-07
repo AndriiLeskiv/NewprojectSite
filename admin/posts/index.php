@@ -22,19 +22,19 @@
             <?php foreach ($getAllPostsAdmin as $key => $post) {?>
                 <div class="row post">
                     <div class="id col-1"><?=$key + 1?></div>
-                    <div class="title col-3"><?=$post['title']?></div>
-                    <div class="author col-2"><?=$post['user_name']?></div>
+                    <div class="title col-3"><?=$post['title'];?></div>
+                    <div class="author col-2"><?=$post['user_name'];?></div>
                     <div class="edit col-2">
-                        <a href="#">Change</a>
+                        <a href="edit.php?id=<?=$post['id'];?>">Change</a>
                     </div>
                     <div class="delete col-2">
-                        <a href="#">Delete</a>
+                        <a href="edit.php?id_delete=<?=$post['id'];?>">Delete</a>
                     </div>
                     <div class="status col-2">
                         <?php if ($post['status']){?>
-                            <a href="#">Unpublish</a>
+                            <a href="edit.php?publish=0&pub_id=<?=$post['id'];?>">Unpublish</a>
                         <?php }else{ ?>
-                            <a href="#">Public</a>
+                            <a href="edit.php?publish=1&pub_id=<?=$post['id'];?>">Publish</a>
                         <?php } ?>
                     </div>
                 </div>

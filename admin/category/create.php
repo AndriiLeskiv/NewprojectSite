@@ -18,7 +18,7 @@
                 <div class="row add-post">
                     <form action="create.php" method="post">
                         <div class="mb-3 col-12 error">
-                            <p><?=$errorMessage?></p>
+                            <?php include_once "../../app/helps/errorInfo.php";?>
                         </div>
                         <div class="col">
                             <input type="text" value="<?=$nameCategory?>" class="form-control" name="nameCategory" id="title" placeholder="Заголовок категорії" aria-label="Заголовок категорії">

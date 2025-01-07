@@ -1,6 +1,6 @@
 <?php include_once "app/database/db.php";
 
-$errorMessage = "";
+$errorMessage = [];
 
 // Реєстрація юзера
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-register"])) {
@@ -11,19 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-register"])) {
     $password2 = trim($_POST["password2"]);
 
     if ($login === '' || $email === '' || $password === ''){
-        $errorMessage = 'Не усі поля заповнені!';
+        $errorMessage[] = 'Не усі поля заповнені!';
     }elseif(mb_strlen($login, 'UTF8') < 3){
-        $errorMessage = 'Логін повинен бути більшим ніж 3 символи';
+        $errorMessage[] = 'Логін повинен бути більшим ніж 3 символи';
     }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorMessage = 'Некоректний email!';
+        $errorMessage[] = 'Некоректний email!';
     }elseif ($password !== $password2){
-        $errorMessage = 'Паролі не співпадають!';
+        $errorMessage[] = 'Паролі не співпадають!';
     }elseif (strlen($password) < 6) {
-        $errorMessage = 'Пароль повинен містити щонайменше 6 символів!';
+        $errorMessage[] = 'Пароль повинен містити щонайменше 6 символів!';
     }else{
         $exist = selectOne('users', ['email' => $email]);
         if ($exist && $exist['email'] === $email){
-            $errorMessage = 'Користувач з такою поштоюю вже існує!';
+            $errorMessage[] = 'Користувач з такою поштоюю вже існує!';
         }else{
             $password = password_hash($password, PASSWORD_DEFAULT);
             $post =[
@@ -48,12 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-login"])) {
     $password = trim($_POST["password"]);
 
     if ($email === '' || $password === '') {
-        $errorMessage = 'Не усі поля заповнені!';
+        $errorMessage[] = 'Не усі поля заповнені!';
         return;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errorMessage = 'Некоректний email!';
+        $errorMessage[] = 'Некоректний email!';
         return;
     }
 
@@ -62,10 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn-login"])) {
         if(password_verify($password, $existUser['password'])){
             userAuthorization($existUser);
         }else{
-            $errorMessage = 'Пароль введено не правильно!';
+            $errorMessage[] = 'Пароль введено не правильно!';
         }
     } else {
-        $errorMessage = 'Користувача з такою поштоюю не знайдено!';
+        $errorMessage[] = 'Користувача з такою поштоюю не знайдено!';
     }
 }else{
     $email = '';
