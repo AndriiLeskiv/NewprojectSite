@@ -156,12 +156,12 @@ function selectAllFromPostWithUser($table1, $table2){
 }
 
 //Join post with user(index.php)
-function selectAllPostAndUser($table1, $table2){
+function selectAllPostAndUser($table1, $table2, $limit, $offset){
     global $connect;
     $sql = "SELECT
     p.*,
     u.user_name
-    FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.status = 1";
+    FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.status = 1 LIMIT $limit OFFSET $offset";
     try {
         $query = $connect->prepare($sql);
         $query->execute();
@@ -181,6 +181,87 @@ function selectTopPost($table){
         $query->execute();
         dbCheckError($query);
         return $query->fetchAll();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+// Search posts
+function searchAllPost($text, $table1, $table2){
+    $text = trim(strip_tags(stripcslashes(htmlspecialchars($text))));
+
+    global $connect;
+    $sql = "SELECT
+        p.*,
+        u.user_name
+        FROM $table1 AS p 
+        JOIN $table2 AS u 
+        ON p.id_user = u.id 
+        WHERE p.status = 1
+        AND p.title LIKE '%$text%' OR p.content LIKE '%$text%'";
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+        return $query->fetchAll();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+// Single page query
+function selectSinglePost($postIs, $table1, $table2){
+    global $connect;
+    $sql = "SELECT
+    p.*,
+    u.user_name
+    FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.id = $postIs";
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+        return $query->fetch();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+// Request to retrieve data from one table
+function selectAllCategoryPost($table, $table2, $params =[]) {
+    global $connect;
+    $sql = "SELECT p.*,
+        u.user_name
+        FROM $table AS p JOIN $table2 AS u ON p.id_user = u.id";
+
+    if(!empty($params)){
+        $i = 0;
+        foreach($params as $key => $value){
+            if (!is_numeric($value)){
+                $value = "'".$value."'";
+            }
+            if($i === 0){
+                $sql .= " WHERE $key = $value";
+            }else{
+                $sql .= " AND $key = $value";
+            }
+            $i++;
+        }
+    }
+
+    $query = $connect->prepare($sql);
+    $query->execute();
+    dbCheckError($query);
+    return $query->fetchAll();
+}
+
+function countRow($table){
+    global $connect;
+    $sql = "SELECT count(*) FROM $table WHERE status = 1";
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+        return $query->fetchColumn();
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

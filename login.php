@@ -7,7 +7,7 @@
     <form class="row justify-content-center" method="post" action="login.php">
         <h2 class="col-12">Форма авторизації</h2>
         <div class="mb-3 col-12 col-md-4 error">
-            <p><?=$errorMessage?></p>
+            <?php include_once "app/helps/errorInfo.php";?>
         </div>
         <div class="w-100"></div>
         <div class="mb-3 col-12 col-md-4">

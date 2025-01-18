@@ -1,6 +1,6 @@
 <?php
-    include_once "../../app/database/db.php";
-    include_once "../../root_path.php";
+    include_once __DIR__  ."/../../app/database/db.php";
+    include_once __DIR__ ."/../../root_path.php";
 
 $errorMessage = [];
 
