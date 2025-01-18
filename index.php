@@ -1,5 +1,7 @@
 <?php
     include_once "app/include/header.php";
+    $posts = selectAllPostAndUser('posts', 'users');
+    $postTop = selectTopPost('posts');
 ?>
 
 <div class="container">
@@ -8,30 +10,22 @@
     </div>
     <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="assets/img/img_1.jfif" class="d-block w-100" alt="...">
-                <div class="carousel-caption carousel-caption-hack d-none d-md-block">
-                    <h5>
-                        <a href="#">First slide label</a>
-                    </h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="assets/img/img_2.jfif" class="d-block w-100" alt="...">
-                <div class="carousel-caption carousel-caption-hack d-none d-md-block">
-                    <h5>
-                        <a href="#">First slide label</a>
-                    </h5>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="assets/img/img_4.jfif" class="d-block w-100" alt="...">
-                <div class="carousel-caption carousel-caption-hack d-none d-md-block">
-                    <h5>
-                        <a href="#">First slide label</a>
-                    </h5>
-                </div>
-            </div>
+            <?php foreach($postTop as $key => $pTop) {
+                if ($key == 0) {?>
+                    <div class="carousel-item active">
+                <?php }else{?>
+                    <div class="carousel-item">
+                <?php } ?>
+                        <img src="<?=BASE_URL . '/assets/img/posts/' . $pTop['img'];?>" alt="<?=$pTop['title'];?>" class="d-block w-100">
+                        <div class="carousel-caption carousel-caption-hack d-none d-md-block">
+                            <h5>
+                                <a href="<?=BASE_URL . 'single.php?post=' . $pTop['id']?>">
+                                    <?=strlen($pTop['title']) > 60 ? mb_substr($pTop['title'], 0, 60, 'UTF-8') . '...' : $pTop['title']; ?>
+                                </a>
+                            </h5>
+                        </div>
+                    </div>
+            <?php } ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -48,141 +42,25 @@
     <div class="content row">
         <div class="main-content col-md-9 col-12">
             <h2>Останні публікації</h2>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_1.jfif" alt="" class="img-thumbnail">
+            <?php foreach ($posts as $key => $post){ ?>
+                <div class="post row">
+                    <div class="img col-12 col-md-4">
+                        <img src="<?=BASE_URL . '/assets/img/posts/' . $post['img'];?>" alt="<?=$post['title'];?>" class="img-thumbnail">
+                    </div>
+                    <div class="post_text col-12 col-md-8">
+                        <h3>
+                            <a href="<?=BASE_URL . 'single.php?post=' . $post['id']?>">
+                                <?=strlen($post['title']) > 60 ? mb_substr($post['title'], 0, 60, 'UTF-8') . '...' : $post['title']; ?>
+                            </a>
+                        </h3>
+                        <i class="fa-solid fa-user"></i> <?=$post['user_name'];?>
+                        <i class="fa-solid fa-calendar"> </i><?=$post['created_date'];?>
+                        <p class="preview-text">
+                            <?=strlen($post['content']) > 100 ? mb_substr($post['content'], 0, 100, 'UTF-8') . '...' : $post['content']; ?>
+                        </p>
+                    </div>
                 </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="assets/img/img_3.png" alt="" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href="">Круті статті по новій темі...</a>
-                    </h3>
-                    <i class="fa-solid fa-user"></i>Ім'я автора
-                    <i class="fa-solid fa-calendar"></i>Dec 30, 2024
-                    <p class="preview-text">
-                        Lorem ipsum dolor sit   Lorem ipsum dolor sit Lorem ipsum dolor sit Lorem ipsum dolor sit
-                    </p>
-                </div>
-            </div>
+            <?php } ?>
         </div>
 
         <div class="sidebar col-md-3 col-12">

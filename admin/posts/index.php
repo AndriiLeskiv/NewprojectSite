@@ -22,7 +22,9 @@
             <?php foreach ($getAllPostsAdmin as $key => $post) {?>
                 <div class="row post">
                     <div class="id col-1"><?=$key + 1?></div>
-                    <div class="title col-3"><?=$post['title'];?></div>
+                    <div class="title col-3">
+                        <?=strlen($post['title']) > 50 ? mb_substr($post['title'], 0, 50, 'UTF-8') . '...' : $post['title']; ?>
+                    </div>
                     <div class="author col-2"><?=$post['user_name'];?></div>
                     <div class="edit col-2">
                         <a href="edit.php?id=<?=$post['id'];?>">Change</a>

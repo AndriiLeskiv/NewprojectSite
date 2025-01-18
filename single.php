@@ -1,4 +1,8 @@
-<?php include_once "app/include/header.php"; ?>
+<?php
+    include_once "app/include/header.php";
+    $post = selectOne('posts', ['id' => $_GET['post']]);
+    tt($post);
+?>
 
 <div class="container">
     <div class="content row">

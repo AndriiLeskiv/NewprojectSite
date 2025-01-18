@@ -154,3 +154,34 @@ function selectAllFromPostWithUser($table1, $table2){
         echo "Error: " . $e->getMessage();
     }
 }
+
+//Join post with user(index.php)
+function selectAllPostAndUser($table1, $table2){
+    global $connect;
+    $sql = "SELECT
+    p.*,
+    u.user_name
+    FROM $table1 AS p JOIN $table2 AS u ON p.id_user = u.id WHERE p.status = 1";
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+        return $query->fetchAll();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
+
+//Join post with user(index.php)
+function selectTopPost($table){
+    global $connect;
+    $sql = "SELECT * FROM $table WHERE category_id = 8";
+    try {
+        $query = $connect->prepare($sql);
+        $query->execute();
+        dbCheckError($query);
+        return $query->fetchAll();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
