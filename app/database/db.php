@@ -2,12 +2,6 @@
 session_start();
 require "connect.php";
 
-function tt($value){
-    echo '<pre>';
-    print_r($value);
-    echo '</pre>';
-}
-
 // check the request execution
 function dbCheckError($query){
     $errors = $query->errorInfo();

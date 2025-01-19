@@ -291,3 +291,22 @@ header ul li ul li a{
     font-style: italic;
     font-size: 0.8rem;
 }
+
+/*COMMENTS*/
+.all-comments{
+    padding-top: 3rem;
+}
+.all-comments .one-comment{
+    padding: 1rem;
+    border: 1px solid #008484;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+.all-comments .one-comment i{
+    margin: .3rem .6rem 0 0;
+    font-weight: 600;
+}
+.all-comments .one-comment span{
+    display: inline-flex;
+    margin: 1.5rem 1.5rem 1.5rem 0;
+}

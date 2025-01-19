@@ -31,7 +31,7 @@
                             <a href="#"><i class="fa-solid fa-user"></i> <?=$_SESSION['login']?></a>
                             <ul>
                                 <?php if($_SESSION['admin']) { ?>
-                                    <li><a href="#">Admin</a></li>
+                                    <li><a href="<?php echo BASE_URL . 'admin/users/index.php'; ?>">Admin</a></li>
                                 <?php } ?>
                                 <li><a href="<?php echo BASE_URL . 'logout.php'?>">Вихід</a></li>
                             </ul>

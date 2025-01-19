@@ -10,5 +10,8 @@
         <li>
             <a href="<?php echo BASE_URL . 'admin/category/index.php'?>">Категорії</a>
         </li>
+        <li>
+            <a href="<?php echo BASE_URL . 'admin/comments/index.php'?>">Коментарі</a>
+        </li>
     </ul>
 </div>

@@ -20,6 +20,7 @@
                     <p><?=$post['content'];?></p>
                 </div>
             </div>
+            <?php include_once "app/include/comments.php";?>
         </div>
 
         <div class="sidebar col-md-3 col-12">
